@@ -5,10 +5,12 @@ const axios = require("axios");
 
 const app = express();
 
+const CLIENT_URL = process.env.ORIGIN || "http://localhost:5173";
+
 app.use(express.json());
 app.use(
   cors({
-    origin: process.env.ORIGIN || "http://localhost:5173" ,
+    origin: CLIENT_URL,
     methods: "GET,POST ,DELETE , PUT",
   })
 );
@@ -27,7 +29,7 @@ app.post("/login", (req, res) => {
 
   if (error) return res.status(400).send(error.details[0].message);
 
-  const { userName, gender, weight, height } = req.body;
+  const { userName, gender, weight, height } = value;
 
   const newUser = {
     id: users.length + 1,
