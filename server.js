@@ -5,13 +5,10 @@ const axios = require("axios");
 
 const app = express();
 
-const CLIENT_URL = process.env.ORIGIN || "http://localhost:5173";
-
 app.use(express.json());
 app.use(
   cors({
-    origin: CLIENT_URL,
-    methods: "GET,POST ,DELETE , PUT",
+    origin: "*",
   })
 );
 
